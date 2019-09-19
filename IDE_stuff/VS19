@@ -1,0 +1,91 @@
+***********Visual Studio 2019**********
+*****KeyBoard Shorcuts
+
+===========Window management=======
+Task--------					    Shortcut-------
+Maximize floating window	-	    Double-click on title bar
+Maximize/minimize windows	-	    Win+Up arrow / Win+Down arrow
+Redock floating window		-	    Ctrl+double-click on title bar
+Move/dock floating windows	-	    Win+Left arrow / Win+Right arrow
+Close active document		-	    Ctrl+F4
+Show open file list			-	    Ctrl+Alt+Down arrow
+Show all floating windows	-	    Ctrl+Shift+M
+Show jump list				-	    Win+Alt+N
+Start new instance			-	    Win+Shift+N
+Switch between windows		-	    Win+N
+
+===========Search=======
+Task--------					    Shortcut-------
+Solution Explorer search	-       Ctrl+;
+Place focus in search box   -       Alt+` when the tool window has focus
+in any tool window 
+(except editor)	
+Search Visual Studio	    -       Ctrl+Q
+Search box results filter	-       @opt - Options
+                            -       @cmd - Commands
+                            -       @mru - Most recently used
+                            -       @doc - Open documents
+Search in Tools Options	    -       Ctrl+E
+
+===========Find in the editor=======
+Task--------					    Shortcut-------
+Quick Find	                -       Ctrl+F
+Quick Find Next Result	    -       Enter
+Quick Find Previous Result	-       Shift+Enter
+Quick Find Expand Drop Down	-       Alt+Down arrow
+Dismiss Find	            -       Esc
+Quick Replace	            -       Ctrl+H
+Quick Replace - Replace Next-   	Alt+R
+Quick Replace - Replace All	-       Alt+A
+Find in Files	            -       Ctrl+Shift+F
+Replace in Files	        -       Ctrl+Shift+H
+
+===========Code editor=======
+Task--------					    Shortcut-------
+Go To All	                -       Ctrl+T
+Go to recent files	        -       Ctrl+T,R
+Multi-caret                 -       Ctrl+Alt+click
+multiple insertion points	
+Multi-caret                 -       Shift+Alt+Ins
+add matching selection	
+Format Document	            -       Ctrl+K,D
+IntelliSense                -       Ctrl+Alt+Space (Toggle)
+suggestion mode	
+Force show IntelliSense	    -       Ctrl+J
+Quick Actions	            -       Ctrl+.
+Snippet picker	            -       Ctrl+K,X or ?,Tab (Visual Basic)
+Surround With	            -       Ctrl+K,S
+Show Quick Info	            -       Ctrl+K,I
+Navigate To	                -       Ctrl+,
+Navigate                    -       Ctrl+Shift+Up (Previous), Ctrl+Shift+Down (Next)
+highlighted references	
+
+Editor zoom	                -       Ctrl+Shift+> (In) Ctrl+Shift+< (Out)
+
+Block selection	            -       Hold Alt and drag mouse
+                                    Shift+Alt+Arrow keys
+Move line up/down	        -       Alt+Up arrow / Alt+Down arrow
+Duplicate line	            -       Ctrl+E,V
+Expand selection	        -       Shift+Alt+=
+Contract selection	        -       Shift+Alt+-
+Go To Definition	        -       F12
+Peek Definition	            -       Alt+F12
+Go To Definition stack	    -       Ctrl+Shift+8 (Back)
+                            -       Ctrl+Shift+7 (Forward)
+Close the Peek              -   	Esc
+Definition window
+Promote the Peek Definition -   	Ctrl+Alt+Home
+window to a regular document tab
+Navigate between            -   	Ctrl+Alt+- and Ctrl+Alt+=
+multiple Peek Definition windows
+Navigate between            -   	F8 and Shift+F8
+multiple Peek results
+Toggle between the code     -   	Shift+Esc
+editor window and the Peek Definition window
+Go to enclosing block	    -       Ctrl+Alt+Up arrow
+Go to next/previous issue   -   	Alt+PgUp / Alt+PgDn
+Contextual navigation menu  -   	Alt+`
+
+
+*****KeyBoard Shorcuts
+***********Visual Studio 2019**********

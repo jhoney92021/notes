@@ -1,0 +1,33 @@
+**************C++ Syntax**************
+----------file type
+C++
+main.cpp
+C#
+main.cs
+Java
+main.java
+Python
+main.py
+----------file type
+********Code Examples
+ex: Hello World
+
+# include <iOstream>
+using namespace std
+int main(){
+	cout << "Hello World!!";
+	return 0
+};
+
+----------Explanation
+std is a namespace like system in Java or C#
+cout means Character Output
+
+C++
+std::cout<< "Print Something";
+C#
+is like System.Console.WriteLine("Print Something");
+Java
+or system.console.log("Print Something");
+Python
+print("Print Something")
