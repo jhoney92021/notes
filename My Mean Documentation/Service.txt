@@ -1,0 +1,92 @@
+***********MVC***********
+OOP and app.component.ts
+
+export class AppComponent {
+       title = 'app';
+}
+
+
+Role	        Description	Angular file
+View	        Construct the visual output	Component's .html and .css files
+Controller	    Contain the logic and pass instructions to the View	Component's .ts file
+Model	        Gather data for the Controller	We will discuss this soon!
+
+***********Service***********
+Service == Model
+
+**********Observables
+Observables are a way to manage asynchronous data. 
+With Angular, an http response is an Observable.
+*****Subscribe
+An Observable will deliver its data to any part of the app that has subscribed to it,
+
+
+***********Create_Service***********
+
+**********
+ng g s nameOfService
+**********
+**********
+ng g s http
+**********
+Here, we're naming our service 'http', 
+    but you may name it whatever you like. 
+    This gives us a file called http.service.ts. 
+    Open this file and you'll see that we are 
+        exporting a class called HttpService, 
+        which means another file can import it!
+
+**********Register
+
+import { HttpService } from './http.service';
+
+@NgModule({
+   ...
+   providers: [HttpService],
+   ...
+})
+**********Client
+
+import { HttpClientModule } from '@angular/common/http';
+@NgModule({
+   ...
+   imports: [
+      BrowserModule,
+      HttpClientModule
+   ],
+   ...
+})
+**********Dependancy injection
+**********.../app/http.service.ts
+
+import { HttpClient } from '@angular/common/http';
+
+export class HttpService {
+    constructor(private _http: HttpClient){}
+}
+*****Dependancy injection ex2
+*****.../app/app.component.ts
+
+import { HttpService } from './http.service';
+
+export class AppComponent {
+   title = 'app';
+   constructor(private _httpService: HttpService){}
+ }
+
+**********Fetch**********
+**********.../app/http.service.ts
+getTasks(){
+    // our http response is an Observable, store it in a variable
+    let tempObservable = this._http.get('/tasks');
+    // subscribe to the Observable and provide the code we would like to do with our data from the response
+    tempObservable.subscribe(data => console.log("Got our tasks!", data));
+ }
+
+**********.../app/http.service.ts
+
+export class HttpService {
+    constructor(private _http: HttpClient){
+        this.getTasks();
+    }
+}

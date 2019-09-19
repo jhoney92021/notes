@@ -1,0 +1,24 @@
+************New Mongo***********
+
+*************
+npm init -y
+*************
+*************
+npm install express ejs mongoose
+*************
+
+
+const mongoose = require('mongoose');
+
+
+*********server.js
+mongoose.connect('mongodb://localhost/name_of_your_DB', {useNewUrlParser: true});
+*********server.js
+
+**************REQUIRED FOR POSTS
+app.use(express.urlencoded({extended: true}));
+**************REQUIRED FOR POSTS
+
+*********to make a file
+echo.>
+*********to make a file

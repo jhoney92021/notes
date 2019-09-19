@@ -1,0 +1,217 @@
+---------INHERITANCE--------
+class Vehicle
+{
+    public int NumPassengers;
+    public string Color;
+    public double Odometer;
+    // Say Vechicle has two overloaded constructors
+    // We will either need to pass up two values (int, string), from Car ...
+    public Vehicle(int numPas, string col)
+    {   
+        NumPassengers = numPas;
+        Color = col;
+        Odometer = 0;
+    }
+    // Or just one string value.  
+    public Vehicle(string col)
+    {
+        NumPassengers = 5;
+        Color = col;
+        Odometer = 0;
+    }
+    
+}
+// Defining a child class of Vehicle
+class Car : Vehicle
+{
+    // We can add members that are unique to Cars, things that won't describe ALL vehicles
+    public string Make;
+    public string Model;
+    // but when we define a constructor for Car, we need to satisfy any constructor requirements
+    // for at least ONE constructor on the parent Vehicle class
+    public Car(string color, string make, string model) : base(color)
+    {
+        Make = make;
+        Model = model;
+    }
+}
+---------INHERITANCE--------
+-------METHOD OVERRIDE-------
+class Vehicle
+{
+    //All past code for the Car Vehicle should still be present
+    public virtual void GetInfo()
+    {
+        Console.WriteLine($"Num Passengers: {NumPassengers}");
+        Console.WriteLine($"Color: {Color}");
+        Console.WriteLine($"Miles: {Odometer}");
+    }
+}
+ 
+class Car : Vehicle
+{
+    //All past code for the Car Class should still be present
+    public override void GetInfo()
+    {
+        Console.WriteLine($"Num Passengers: {NumPassengers}");
+        Console.WriteLine($"Color: {Color}");
+        Console.WriteLine($"Miles: {Odometer}");
+        Console.WriteLine($"Make: {Make}");
+        Console.WriteLine($"Model: {Model}");
+    }
+}
+ 
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Vehicle someVehicle = new Vehicle("Green");
+        Car someCar = new Car("Yellow", "Dodge", "Dart");
+        someVehicle.GetInfo();
+        someCar.GetInfo();
+    }
+}
+
+*****************************
+*****************************
+class Vehicle
+{
+    //All past code for the Car Vehicle should still be present
+    public virtual void GetInfo()
+    {
+        Console.WriteLine($"Num Passengers: {NumPassengers}");
+        Console.WriteLine($"Color: {Color}");
+        Console.WriteLine($"Miles: {Odometer}");
+    }
+}
+ 
+class Car : Vehicle
+{
+    //All past code for the Car Class should still be present
+    public override void GetInfo()
+    {
+        Console.WriteLine($"Num Passengers: {NumPassengers}");
+        Console.WriteLine($"Color: {Color}");
+        Console.WriteLine($"Miles: {Odometer}");
+        Console.WriteLine($"Make: {Make}");
+        Console.WriteLine($"Model: {Model}");
+    }
+}
+ 
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Vehicle someVehicle = new Vehicle("Green");
+        Car someCar = new Car("Yellow", "Dodge", "Dart");
+        someVehicle.GetInfo();
+        someCar.GetInfo();
+    }
+}
+-------METHOD OVERRIDE-------
+--INHERITANCE ACCESSIBILITY--
+class Vehicle
+{
+    //All past code for the Vehicle should still be present
+    private double Odometer;
+}
+ 
+class Car : Vehicle
+{
+    //All past code for the Car Class should still be present
+    public void Drive(double distance)
+    {
+        // 'Vehicle.Odometer' is inaccessible due to its protection level!!!
+        Odometer += distance;
+        Console.WriteLine("I'm driving!");
+    }
+}
+*****************************
+*****************************
+class Vehicle
+{
+    // Now Car access Odometer!
+    protected double Odometer;
+}
+ 
+class Car : Vehicle
+{
+    
+    public void Drive(double distance)
+    {
+        Odometer += distance;
+        Console.WriteLine("I'm driving!");
+    }
+}
+--INHERITANCE ACCESSIBILITY--
+---------POLYMORHPISM--------
+class Program
+{
+    public static void Main(string[] args) 
+    {
+        Vehicle someVehicle = new Vehicle("Green");
+        // Constructing a Car "as a" Vehicle
+        Vehicle carAsVehicle = new Car("Yellow", "Dodge", "Dart");
+        
+        // Constructing a List of Vehicle, storing both Vehicle and Car objects
+        Car someCar = new Car("Red", "Toyota", "Corolla");
+        Car someOtherCar = new Car("Purple", "Ford", "Fiesta");
+        List<Vehicle> vehicles = new List<Vehicle>()
+        {
+            someVehicle, carAsVehicle, someCar, someOtherCar
+        };
+    }
+}
+*****************************
+*****************************
+class Person 
+{
+    public List<Vehicle> OwnedVehicles;
+     
+    public Person() 
+    {
+    	OwnedVehicles = new List<Vehicle>();
+    }
+     
+    // can add ANY type of vehicle
+    public void AddToVehicles(Vehicle newVehicle)
+    {
+        OwnedVehicles.Add(newVehicle);
+    }
+     
+    // can call DisplayInfo() on all vehicles, if DisplayInfo() is overridden on a child class,
+    // we will see the child's own implementation!
+    public void DisplayVehicles()
+    {
+        foreach(Vehicle v in OwnedVehicles)
+        {
+            v.DisplayInfo();
+        }
+    }
+}
+ 
+class Program
+{
+    public static void Main(string[] args) 
+    {
+        Vehicle someVehicle = new Vehicle("Green");
+         
+        // Constructing a Car "as a" Vehicle
+        Vehicle carAsVehicle = new Car("Yellow", "Dodge", "Dart");
+        
+        // Constructing a couple Cars
+        Car someCar = new Car("Red", "Toyota", "Corolla");
+        Car someOtherCar = new Car("Purple", "Ford", "Fiesta");
+         
+        // Constructing a Person, adding any Vehicle to their list of OwnedVehicles
+        Person somePerson = new Person();
+        somePerson.AddToVehicles(someVehicle);
+        somePerson.AddToVehicles(carAsVehicle);
+        somePerson.AddToVehicles(someCar);
+        somePerson.AddToVehicles(someOtherCar);
+         
+        // Calling DisplayVehicles!
+        somePerson.DisplayVehicles();
+    }
+}
+---------POLYMORHPISM--------

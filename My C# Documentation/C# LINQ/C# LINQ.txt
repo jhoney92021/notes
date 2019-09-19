@@ -1,0 +1,119 @@
+-----------------LINQ-----------------
+LINQ ==  Language Integrated Query
+*********LAMBDA EXPRESSIONS***********
+When using method syntax, we have to learn about lambda expressions. 
+A lambda expression is a way of writing an otherwise 
+    cumbersome function in a simplified inline expression.  
+We will pass a lambda expression as the condition 
+    or parameter on which we want the query to execute.  
+An arrow symbol => represents the return 
+    of an operation performed on each item.  
+The left hand side of the arrow symbol is a variable definition,
+     its type determined by whatever type that the collection contains.  
+The right hand side of the arrow symbol is
+     the operation to be performed on each item.
+
+There are two types of operations our lambda expressions will need to perform: selectors, and predicates.
+
+It will help to see these expressions in some 
+    examples with the LINQ methods that will be using them. 
+Let's start with a simple hard-coded dataset, 
+    made up of the following Product class:
+*********LAMBDA EXPRESSIONS***********
+**************************************
+**************************************
+public class Product
+{
+    public string Name {get;set;}
+    public string Category {get;set;}
+    public double Price {get;set;}
+}
+**************************************
+**************************************
+Product[] myProducts = new Product[]
+{
+     new Product { Name = "Jeans", Category = "Clothing", Price = 24.7 },
+     new Product { Name = "Socks", Category = "Clothing", Price = 8.12 },
+     new Product { Name = "Scooter", Category = "Vehicle", Price = 99.99 },
+     new Product { Name = "Skateboard", Category = "Vehicle", Price = 24.99 },
+     new Product { Name = "Skirt", Category = "Clothing", Price = 17.5 }
+};
+**************************************
+SORTING
+**************************************
+// The lambda here, uses a variable 'prod' which represents a product 
+// (although this may be named whatever you like)  
+//  The right hand side of the arrow is selecting Price as the thing we want to order by.
+IEnumerable<Product> orderedProducts = myProducts.OrderByDescending(prod => prod.Price);
+**************************************
+Filtering
+*****************WHERE****************
+    // Each "Product" in the array will be tested to see if its Category property matches the string "Clothing"
+    // If it matches (if the bool returns true) it will "pass the test" and be included in the result
+    IEnumerable<Product> justClothings = myProducts.Where(prod => prod.Category == "Clothing");
+********FirstOrDefault****************
+   Product justJeans = myProducts.FirstOrDefault(prod => prod.Name == "Jeans");
+   
+   // FirstOrDefault can be used with no argument, as well, which will just retrieve the first item in the collection
+   Product firstOne = myProducts.FirstOrDefault();
+*****************SELECT***************
+    IEnumerable<string> justCategories = myProducts.Select(prod => prod.Category);
+**************************************
+General Purpose
+*************Min/Max/Sum**************
+   int[] numbers = new int[]{12,4,5,2,5,-1};
+   int smallestNum = numbers.Min();
+   int largestNum = numbers.Max();
+   int sumOfNums = numbers.Sum();
+   // Ok, this makes sense for integers, but what about the .Sum of a Product?
+   // You can use a "selector" lambda as an overload these methods to determine how something like .Sum could be calculated
+   double sumOfProductPrice = myProducts.Sum(prod => prod.Price);
+************ToList/ToArray************
+   List<Product> highTicketItemList = myProducts.Where(p => p.Price > 100).ToList();
+   Product[] orderedProductArray = myProducts
+        .Where(p => p.Category == "Clothing")
+        .OrderBy(p => p.Price)
+        .ToArray();
+**************************************
+Join
+**************************************
+List<string> Food = new List<string> 
+{
+    "apple",
+    "banana",
+    "carrot",
+    "fudge",
+    "tomato"
+};
+                           
+List<string> Adjective = new List<string> 
+{
+    "tasty",
+    "capital",
+    "best",
+    "typical",
+    "flavorful",
+    "toothsome"
+};
+ 
+// each string in the Food list will be combined with each adjective from the Adjective list where their first characters match
+IEnumerable<string> Alliterations = Food.Join(Adjective, 
+    foodItem => foodItem[0],
+    adjective => adjective[0],
+    (foodItem, adjective) =>
+    {
+         return adjective + " " + foodItem;
+    });
+ 
+//Combo:   "best banana",
+//         "capital carrot",
+//         "flavorful fudge",
+//         "tasty tomato",
+//         "typical tomato",
+//         "toothsome tomato"
+ 
+// Notice that apple is not in the combination collection because it does not match an adjective, but tomato occurs three times because it matched three different adjectives
+**************************************
+**************************************
+
+-----------------LINQ-----------------

@@ -1,0 +1,84 @@
+--------------PARTIALS---------------
+*************************************
+_ViewImports.cshtml
+*************************************
+// other imports
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+*************************************
+NavPartial.cshtml
+*************************************
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Me</a></li>
+    </ul>
+</nav>
+*************************************
+Index.cshtml
+*************************************
+*************************************
+Index.cshtml
+*************************************
+<partial name="NavPartial"/>
+<h1>Welcome to this site!</h1>
+<p>The rest of your View content here...</p>
+--------------PARTIALS---------------
+------Passing Data to Partials-------
+*************************************
+ViewBag
+*************************************
+<partial name="NameOfPartial" view-data="ViewData"/>
+*************************************
+HomeController.cs
+*************************************
+// using statements
+public class HomeController : Controller
+{
+    [HttpGet("")]
+    public IActionResult Index()
+    {
+    	// assigning ViewBag properties for the Index view
+    
+        ViewBag.CurrentTime = DateTime.Now;
+        ViewBag.Message = "The Time is:";
+        return View();
+    }
+}  
+*************************************
+Index.cshtml
+*************************************
+<h1>Home Page</h1>
+<partial name="TimeKeeperPartial" view-data="ViewData"/> 
+*************************************
+TimeKeeperPartial.cshtml
+*************************************
+<h1>Keeping Time...</h1>
+<p>@ViewBag.Message @ViewBag.CurrentTime</p>
+*************************************
+View Models
+*************************************
+<partial name="NameOfPartial" model="ModelObject"/>
+
+*************************************
+Product.cs
+*************************************
+public class Product
+{
+    public string ProductName {get;set;}
+    public double Price {get;set;}
+}
+*************************************
+ProductPartial.cshtml
+*************************************
+@model Product
+<h1>Name: @Model.ProductName</h1>
+<h1>Price: @Model.Price</h1>
+*************************************
+Index.cshtml
+*************************************
+@{
+    Product productObject = new Product(){ProductName="Boombox", Price=120.00};    
+}
+<h1>Home Page</h1>
+<partial name="ProductPartial" model="productObject"/> 
+------Passing Data to Partials-------

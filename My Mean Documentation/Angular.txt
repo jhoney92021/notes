@@ -1,0 +1,33 @@
+***********Starting***********
+
+********
+npm install -g @angular/cli
+********
+
+********
+ng new public
+********
+
+*************
+npm install express ejs mongoose
+*************
+
+********
+ng build --watch
+********
+
+********
+app.use(express.static( __dirname + '/public/dist/public' ));
+********
+
+********
+ng generate service http
+********
+
+********
+ng generate component xyz
+********
+
+*********to make a file
+echo.>
+*********to make a file

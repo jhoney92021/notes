@@ -1,0 +1,30 @@
+Open Terminal
+
+right-click Git Bash here
+windowsKey R - cmd for command prompt
+
+cd desktop
+
+mkdir test
+
+touch index.html
+touch style.css
+touch commands.txt
+
+cp index.html index_2.html
+
+cd..
+
+mkdir destination
+
+mv index_2.html /destination
+
+rm style.css
+
+rm -rf /destination
+
+
+
+
+
+

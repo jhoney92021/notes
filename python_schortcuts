@@ -1,0 +1,169 @@
+CHECK DATA TYPE, BEFORE CREATING LOOPS!!!!
+
+Numbers: An are integers (such as 1, 2, 3…), floats (such as 2.6, 4.8, etc.), 
+fractions (such as ½. ¾, etc.) or even complex numbers.
+	int (signed integer)
+	float
+	long
+	complex
+Sequences:
+	Strings: Sequence of Unicode characters, like an HTML document.
+	Bytes/Byte array: Any type of file.
+	Lists: An ordered sequence of values.
+	Tuples: An ordered immutable sequence of values.
+Boolean: Holds either true or false values.
+Sets: An unordered container of values.
+Dictionaries: An key-paired values set in an unordered way.
+
+
+. = this directory
+.. = parent directory
+cd = change directory
+
+***********NEW ENVIRONMENTS******************
+-------------------------------------------------
+| Mac/Linux: | pip3 install virtualenv           
+-------------+-----------------------------------
+| Windows:   | pip install virtualenv     
+-------------------------------------------------
+
+USED FOR SETTING UP NEW ENVIRONMENTS PATHS
+------------------------------------------------------------------
+| Mac/Linux: | virtualenv -p python3 py3Env                       
+-------------+----------------------------------------------------
+| Windows:   | virtualenv py3Env                
+------------------------------------------------------------------
+
+
+------------------------------------------------------------------
+| Mac/Linux: | source py3Env/bin/activate                         
+------------------------------------------------------------------
+| Windows command prompt : | call py3Env\Scripts\activate       
+------------------------------------------------------------------
+| Windows git bash : | source py3Env/Scripts/activate         
+------------------------------------------------------------------
+
+***********NEW ENVIRONMENTS END******************
+
+
+***********INDEX.HTML TEMPLATING******************
+
+<!-- based on the folder structure on the right -->
+<!-- linking a css style sheet -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+<!-- linking a javascript file -->
+<script type="text/javascript" src="{{ url_for('static', filename='my_script.js') }}"></script>
+<!-- linking an image -->
+<img src="{{ url_for('static', filename='my_img.png') }}">
+
+***********INDEX.HTML TEMPLATING******************
+
+class name:
+
+# import the library
+import urllib.request
+response = urllib.request.urlopen("http://www.codingdojo.com")
+html = response.read()
+print(html)
+
+to have py get urls
+
+import unittest
+
+def reverseArray(list):
+    x = len(list)
+    Q = x // 2   
+
+    for i in range(0, Q, 1):
+        y = list[i]
+        list[i] = list[(x-1)-i]
+        list[(x-1)-i] = y
+    print(list)
+    return list
+
+class reverseArrayTests(unittest.TestCase):
+
+    def testOne(self):
+        self.assertEqual(reverseArray([1,2,3]),[3,2,1])
+    def testTwo(self):
+        self.assertEqual(reverseArray([5,1,2,3]),[3,2,1,5])
+
+    def setUp(self):
+        print('running setUp')
+
+    def tearDown(self):
+        print('running tearDown')
+if __name__ == "__main__":
+    unittest.main()
+
+# print(reverseArray([1,2,3,4]))
+
+***********RULES FOR PATTERNS FOR URLS.PY******************
+[] - matches any value in a range
+Example: '[a-z]' matches 'abc' and 'xyz' but not 'b7' or 'ABC'
+\d+ - matches digits with at least one digit
+Example: '\d+' matches '8' and '876' but not '5c' or ''
+\w+ - matches a string with at least one character (including numbers, excluding special characters)
+Example: '\w+' matches '8' and 'abc123' but not 'a!' or ''
+{n} - matches n number of repetitions of the preceding pattern
+Example: '[0-9]{2}' matches '36' but not '876' or '2'
+
+^
+-starts with
+$
+-ends with
+
+***********PATTERNS FOR URLS.PY******************
+urlpatterns = [
+        url(r'^bears$', views.one_method),                        # would only match localhost:8000/bears
+        url(r'^bears/(?P<my_val>\d+)$', views.another_method),    # would match localhost:8000/bears/23
+        url(r'^bears/(?P<name>\w+)/poke$', views.yet_another),    # would match localhost:8000/bears/pooh/poke
+    	url(r'^(?P<id>[0-9]+)/(?P<color>\w+)$', views.one_more),  # would match localhost:8000/17/brown
+]
+
+
+***********METHODS IN VIEWS.PY******************
+def one_method(request):                # no values passed via URL
+    pass                                
+    
+def another_method(request, my_val):	# my_val would be a number from the URL
+    pass                                # given the example above, my_val would be 23
+    
+def yet_another(request, name):	        # name would be a string from the URL
+    pass                                # given the example above, name would be 'pooh'
+    
+def one_more(request, id, color): 	# id would be a number, and color a string from the URL
+    pass                                # given the example above, id would be 17 and color would be 'brown'
+	
+
+***********STARTING A NEW PROJECT******************
+(djangoPy3Env) django_intro> django-admin startproject your_project_name_here
+(djangoPy3Env) apps> python ../manage.py startapp your_app_name_here
+python manage.py shell
+exit()
+>>> from apps.your_app_name_here.models import *
+  > python manage.py makemigrations
+  > python manage.py migrate
+
+*******************DEPLOYMENT*********************
+(djangoPy3Env) project_name> pip freeze > requirements.txt
+(djangoPy3Env) project_name> touch .gitignore
+
+__pycache__/
+.vscode/
+venv/
+db.sqlite3
+
+****************GITHUB STUFF FOR DEPLOYMENT**************
+(djangoPy3Env) project_name> git init
+(djangoPy3Env) project_name> git add --all
+(djangoPy3Env) project_name> git commit -m "initial commit"
+
+(djangoPy3Env) project_name> git remote add origin https://github.com/your_github_username/your_github_repo_name
+(djangoPy3Env) project_name> git push origin master
+
+****************AWS PASS**************
+vVXzDDWBUKy9Y!6
+
+
+

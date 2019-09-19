@@ -1,0 +1,22 @@
+---------VewBag----------
+//Other code
+ 
+[HttpGet]
+[Route("")]
+public IActionResult Index()
+{
+    // Here we assign the value "Hello World!" to the property .Example
+    // Property names are arbitrary and can be whatever you like
+    ViewBag.Example = "Hello World!";
+    return View();
+}
+*************************
+*************************
+<h1>@ViewBag.Example</h1>
+*************************
+*************************
+@{
+    string LocalString = ViewBag.Example + " Good to see you!";
+}
+<h1>@LocalString</h1>
+---------VewBag----------

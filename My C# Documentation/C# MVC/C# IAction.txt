@@ -1,0 +1,21 @@
+--------IAction__________
+// In your controller class
+[HttpGet("")]
+public ViewResult Index()
+{
+    return View();
+}
+[HttpGet("{favoriteResponse}")]
+public IActionResult ItDepends(string favoriteResponse)
+{
+    if(favoriteResponse == "Redirect")
+    {
+    	return RedirectToAction("Index");
+    }
+    else if(favoriteResponse == "Json")
+    {
+        return Json(new {FavoriteResponse = favoriteResponse});
+    }
+    return View();
+}
+--------IAction__________

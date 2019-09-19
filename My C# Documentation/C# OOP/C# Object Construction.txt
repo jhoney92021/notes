@@ -1,0 +1,101 @@
+----------------OBJECT CONSTRUCTION-------------
+---------------------ORDER OF-------------------
+//Make sure to include the Vehicle class separate from the Program class
+public class Vehicle
+{
+    //Accessibility of class members is defaulted to private
+    //so we must add the public keyword to anything we
+    //want to allow outside access to.
+    
+    // this unassigned integer will default to 0
+    public int NumPassengers;
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Notice the type for the new object reference
+        // is the same as the class name
+        Vehicle myVehicle = new Vehicle();
+        Console.WriteLine($"My vehicle is holding {myVehicle.NumPassengers} people");
+    }
+}
+---------------------ORDER OF-------------------
+---------------------DYNAMIC--------------------
+public class Vehicle
+{
+     public int NumPassengers;
+     //Notice the Constructor function doesn't need
+     //a return type or the static keyword
+     public Vehicle(int val)
+     {
+          NumPassengers = val;
+     }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        //Adding a value to the object; then passes it to the constructor
+        Vehicle myVehicle = new Vehicle(7);
+        Console.WriteLine($"My vehicle is holding {myVehicle.NumPassengers} people");
+    }
+}
+---------------------DYNAMIC--------------------
+----------------------STATIC--------------------
+public class Vehicle
+{
+     public int NumPassengers;
+    
+     public Vehicle()
+     {
+          NumPassengers = 5;
+     }
+}
+---------------------STATIC---------------------
+---------------------MEMBER---------------------
+Members are the list items of a Constructor
+--FIELDS
+Data a class possesses(attributes)
+    *Color, Name, Width, etc.
+    *Represented by int, string, etc.
+--METHODS
+Functions a class can perform(actions)
+    *Run, Talk, Climb, Do Stuff
+--PROPERTIES
+Control over how the fields are retrieved/updated
+    *Get, Set
+---------------------MEMBER---------------------
+===================PROPERTIES===================
+class Vehicle
+{
+    public string ColorProp
+    {
+        get
+        {
+    	    // Simply referencing the property will invoke the "getter", such as:
+    	    // Console.WriteLine(vehicleObject.ColorProp);
+    	    // and will return the following:
+    
+            return $"This thing is {Color}";
+        }
+        set
+        {
+    	    // Assigning a value to a property, such as:
+    	    // vehicleObject.ColorProp = "Blue";
+    	    // will invoke the "setter", and the "value" keyword will become the assigned value
+    	    // ("Blue" in this example)
+    
+            Color = value;
+        }
+    }
+}
+
+class Vehicle
+{
+    public string Name {get;set;}
+}
+
+===================PROPERTIES===================

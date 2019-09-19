@@ -1,0 +1,84 @@
+------NEW LOCAL PROJECT------
+mkdir FirstCSharp
+cd FirstCSharp
+dotnet new console
+------NEW LOCAL PROJECT------
+
+--------NEW .NET CORE--------
+dotnet new web --no-https -o ProjectName
+
+--------NEW MVC--------
+dotnet new mvc
+
+dotnet new mvc --no-https -o ProjectName
+
+This template creates a fairly large MVC project template,
+     with some interesting - if heavy - defaults. 
+You may also run this template command with the --no-https flag.
+
+The next section will walk through some of those defaults, 
+    and the framework features those defaults are utilizing.
+
+--------VIEW START--------
+
+// _ViewImports.cshtml
+@using MyCoolProj.AnotherNamespace
+
+dotnet new viewimports -o Views
+// and
+dotnet new viewstart -o Views
+
+--------VIEW START--------
+
+--------TO UPDATE BROWSER----
+dotnet watch run
+--------TO UPDATE BROWSER----
+
+-------CMD PROMPT----------
+setx ASPNETCORE_ENVIRONMENT Development
+-------POWERSHELL----------
+[Environment]::SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT","Development","User")
+----------MAC/OS-----------
+export ASPNETCORE_ENVIRONMENT=Development
+
+--------MVC ADDING---------
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();  //add this line
+}
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    // some code removed for brevity
+    app.UseMvc();   //add this line, replacing the app.run lines of code
+}
+--------MVC ADDING---------
+--------NEW .NET CORE--------
+
+
+dotnet new console -o FirstCSharp
+
+FROM MICROSOFT DOCUMENTAION
+FROM MICROSOFT DOCUMENTAION
+
+    dotnet build - Builds a project and all of its dependencies.
+
+    dotnet run - Runs source code without any explicit compile or launch commands.
+
+    The dotnet run command is used in the context of projects, not built assemblies. 
+    If you're trying to run a framework-dependent application DLL instead, 
+    you must use dotnet without a command. 
+
+    For example, to run myapp.dll, use: dotnet myapp.dll
+FROM MICROSOFT DOCUMENTAION
+FROM MICROSOFT DOCUMENTAION
+
+FROM CODING DOJO
+FROM CODING DOJO
+dotnet run
+    actually compiles the program
+
+`dotnet /path/to/YourProject.dll`
+    just calls the file(runs it)
+    must be compiled first
+FROM CODING DOJO
+FROM CODING DOJO

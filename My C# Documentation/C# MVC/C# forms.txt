@@ -1,0 +1,204 @@
+---------------FORMS-------------------
+We've done a few GET requests. 
+Now let's talk about POST requests! On the front end, 
+    we can write traditional HTML forms, 
+    making sure that each input field has a name. 
+On the backend, we can catch those submissions by 
+    accepting them as parameters in their targeted method.
+***************************************
+-------------Method.cshtml-------------
+***************************************
+<form action="method" method="post">
+    <input type="text" name="TextField"/>
+    <input type="number" name="NumberField"/>
+    <button type="submit">Submit</button>
+</form>
+***************************************
+-----------YourController.cs-----------
+***************************************
+// remember to use [HttpPost] attributes!
+[HttpPost]
+[Route("method")]
+public IActionResult Method(string TextField, int NumberField)
+{
+    // Do something with form input
+}
+---------------FORMS-------------------
+------Multiple Forms, Single View------
+***************************************
+-----------Product.cs-----------
+***************************************
+public class Product
+{
+    [Required]
+    [Display(Name="Product Name")]
+    public string ProductName {get;set;}
+    [Required]
+    public double Price {get;set;}
+}
+***************************************
+-----------User.cs-----------
+***************************************
+public class User
+{
+    [Required]
+    public string Username {get;set;}
+    [Required]
+    public int Age {get;set;}
+}
+***************************************
+-----------Index.cshtml-----------
+***************************************
+<h1>Add a Product</h1>
+<partial name="ProductPartial" />
+<h1>Add a User</h1>
+<partial name="UserPartial" />
+***************************************
+-----------ProductPartial.cshtml-----------
+***************************************
+@model Product
+<form action="/create/product" method="post">
+    <div class="form-group">
+        <span asp-validation-for="ProductName"></span>
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName">
+    </div>
+    <div class="form-group">
+        <span asp-validation-for="Price"></span>
+        <label asp-for="Price"></label>
+        <input asp-for="Price">
+    </div>
+    <input type="submit" value="Add Product">
+</form>    
+***************************************
+UserPartial.cshtml
+***************************************
+@model User
+<form action="/create/user" method="post">
+    <div class="form-group">
+        <span asp-validation-for="Username"></span>
+        <label asp-for="Username"></label>
+        <input asp-for="Username">
+    </div>
+    <div class="form-group">
+        <span asp-validation-for="Age"></span>
+        <label asp-for="Age"></label>
+        <input asp-for="Age">
+    </div>
+    <input type="submit" value="Add User">
+</form>  
+***************************************
+HomeController.cs
+***************************************
+public class HomeController : Controller
+{
+    [HttpGet("")]
+    public IActionResult Index()
+    {
+        return View();
+    }
+    [HttpPost("create/product")]
+    public IActionResult CreateProduct(Product newProduct)
+    {
+        if(ModelState.IsValid)
+        {
+            return RedirectToAction("Success");
+        }
+        return View("Index");
+    }
+    [HttpPost("create/user")]
+    public IActionResult CreateUser(User newUser)
+    {
+        if(ModelState.IsValid)
+        {
+            return RedirectToAction("Success");
+        }
+        return View("Index");
+    }
+    [HttpGet("success")]
+    public string Success()
+    {
+        return "You have successfully submitted!";
+    }
+}
+***************************************
+IndexViewModel.cs
+***************************************
+public class IndexViewModel
+{
+    public Product NewProduct {get;set;}
+    public User NewUser {get;set;}
+}
+***************************************
+Index.cshtml
+***************************************
+@model IndexViewModel
+<h1>Add a User</h1>
+<form action="/create/user" method="post">
+    <div class="form-group">
+        <label asp-for="NewUser.Username"></label>
+        <input asp-for="NewUser.Username">
+        <span asp-validation-for="NewUser.Username"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewUser.Age"></label>
+        <input asp-for="NewUser.Age">
+        <span asp-validation-for="NewUser.Age"></span>
+    </div>
+    <input type="submit" value="Add User">
+</form>
+<h1>Add a Product</h1>
+<form action="/create/product" method="post">
+    <div class="form-group">
+        <label asp-for="NewProduct.ProductName"></label>
+        <input asp-for="NewProduct.ProductName">
+        <span asp-validation-for="NewProduct.ProductName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewProduct.Price"></label>
+        <input asp-for="NewProduct.Price">
+        <span asp-validation-for="NewProduct.Price"></span>
+    </div>
+    <input type="submit" value="Add Product">
+</form>
+***************************************
+HomeController.cs
+***************************************
+public class HomeController : Controller
+{
+    [HttpGet("")]
+    public IActionResult Index()
+    {
+        return View();
+    }
+    [HttpPost("create/product")]
+    public IActionResult CreateProduct(IndexViewModel modelData)
+    {
+        // To get the submitted Product from the submission, 
+        // we would just need to grab "NewProduct" from the modelData object
+        Product submittedProduct = modelData.NewProduct;
+        if(ModelState.IsValid)
+        {
+            return RedirectToAction("Success");
+        }
+        return View("Index");
+    }
+    [HttpPost("create/user")]
+    public IActionResult CreateUser(IndexViewModel modelData)
+    {
+        // To get the submitted User from the submission, 
+        // we would just need to grab "NewUser" from the modelData object
+        User submittedUser = modelData.NewUser;
+        if(ModelState.IsValid)
+        {
+            return RedirectToAction("Success");
+        }
+        return View("Index");
+    }
+    [HttpGet("success")]
+    public string Success()
+    {
+        return "You have successfully submitted!";
+    }
+}
+------Multiple Forms, Single View------

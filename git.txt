@@ -1,0 +1,9 @@
+************Git Cmd Prompt Shortcuts*************
+*****deinit
+rm -rf .git
+*****deinit
+*****deinit w/ sub
+rmdir /s .git
+*****deinit w/ sub
+
+************Git Cmd Prompt Shortcuts*************

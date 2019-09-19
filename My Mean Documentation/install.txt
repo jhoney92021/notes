@@ -1,0 +1,29 @@
+************New Project***********
+Let's use NPM to create our first Express server:
+Step 1: Create an empty folder called HelloExpress
+
+Step 2: Navigate inside that folder in your terminal and type 
+****************
+npm init -y
+****************
+        You should now see a file inside of HelloExpress called package.json.  If you open this file, the contents should look something like this:
+
+Step 3: Let’s now install express from the command-line by executing the following command (important: you must be in the same folder as your package.json file)
+
+****************
+npm install express --save
+****************
+
+Developers eventually got annoyed at typing --save all the time and 
+    so the npm install command will execute with the 
+    --save option by default now, allowing us to type instead:
+
+****************
+npm install express
+****************
+
+Furthermore, we can also simply type the letter
+     "i" instead of the word install to shorten the syntax further:
+****************
+npm i express
+****************

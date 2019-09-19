@@ -1,0 +1,95 @@
+----------------1toMany---------------
+public class User
+{
+    [Key]
+    public int UserId {get;set;}
+    public string Name {get;set;}
+    public string Email {get;set;}
+}
+**************************************
+public class Message
+{
+    [Key]
+    public int MessageId {get;set;}
+    public string Content {get;set;}
+    public int UserId {get;set;}
+}
+**************************************
+Navigation Properties
+**************************************
+public class User
+{
+    [Key]
+    public int UserId {get;set;}
+    public string Name {get;set;}
+    public string Email {get;set;}
+    // Navigation property for related Message objects
+    public List<Message> CreatedMessages {get;set;}
+    
+}
+public class Message
+{
+    [Key]
+    public int MessageId {get;set;}
+    public string Content {get;set;}
+    public int UserId {get;set;}
+    // Navigation property for related User object
+    public User Creator {get;set;}
+}
+**************************************
+.Include()
+*****************In your Controller:*********************
+public IActionResult Index()
+{
+    List<Message> messagesWithUser = _dbContext.Messages
+        // populates each Message with its related User object (Creator)
+        .Include(message => message.Creator)
+        .ToList();
+    
+    return View(messagesWithUser);
+}
+*****************In your View:*********************
+@model List<Message>
+@foreach(var message in Model)
+{
+    <p>@message.Creator.Name says: @message.Content</p>
+}
+**************************************
+Querying Related Data
+*****************In your Controller:*********************
+[HttpGet("{userId}")]    
+public IActionResult UserDetails(int userId)
+{
+    // Number of messages created by this User
+    int numMessages = dbContext.Users
+        // Including Messages, so that we may query on this field
+        .Include(user => user.CreatedMessages)
+        // Get a User with userId
+        .FirstOrDefault(user => user.UserId == userId)
+        // Now, with a reference to a User object, and access to a User's Messages
+        // We can get the .Count property of the Messages List
+        .CreatedMessages.Count;
+     
+    // User with the longest Message, we can do this in two stages
+    // First, find the Length of the longest Message
+    int longestMessageLength = dbContext.Messages.Max(message => message.Content.Length);
+     
+    // Second, select one User who's CreatedMessages has Any that matches this character count
+    // Note here that CreatedMessages is a List, and thus can take a LINQ expression: such as .Any()
+    User userWithLongest = dbContext.Users
+        .Include(user => user.CreatedMessages)
+        .FirstOrDefault(user => user.CreatedMessages
+            .Any(message => message.Content.Length == longestMessageLength));
+     
+    // Messages NOT related to this User:
+    // Since this query only requires checking a Message's UserId
+    // and doesn't require us to check data contained in a Message's Creator
+    // We can do this without a .Include()
+    List<Message> unrelatedMessages = dbContext.Messages
+        .Where(message => message.UserId != userId)
+        .ToList();
+     
+    return View();
+}
+**************************************
+----------------1toMany---------------

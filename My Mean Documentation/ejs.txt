@@ -1,0 +1,24 @@
+************New EJS***********
+Static Content -- Serving a static HTML/CSS/JS file from the backend in response to a request.
+
+Templates -- Using a view/templating engine to generate HTML (PHP, embedded ruby, embedded JavaScript) 
+
+Next open your server.js file and let's tell our server to use a static file folder to handle requests for static content!
+
+***********
+app.use(express.static(__dirname + "/static"));
+***********
+
+EJS is the templating engine we are going to use. 
+    EJS stands for Embedded Javascript. 
+    Just like express, ejs is a node module that
+     we will need to install for our project. 
+
+***********
+npm install ejs
+***********
+
+***********
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+***********

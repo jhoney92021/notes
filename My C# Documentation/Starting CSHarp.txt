@@ -1,0 +1,12 @@
+___________SETTING UP A C SHARP PROJECT________
+-----------MAKING DIR AND STARTING DOTNET------
+mkdir FirstCSharp
+cd FirstCSharp
+dotnet new console
+
+OR
+
+dotnet new console -o FirstCSharp
+-----------MAKING DIR AND STARTING DOTNET------
+
+dotnet run

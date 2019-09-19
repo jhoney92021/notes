@@ -1,0 +1,278 @@
+----------------BASIC SYNTAX----------------
+  // FOR SHORT COMMENTS
+  /* FOR COMMENTS THAT ARE LONGER 
+  THAN ONE LINE OF CODE */
+
+  dotnet run //lets a user give input
+
+  Console.WriteLine() = Console.log(jscript), print(python)
+
+    ===============DEFINING VARIABLES=============
+      EX JSCRIPT: var x = 0, var y = 'a string'
+      EX PYTHON: x = 0, y = 'a string'
+      C#:
+      int x = 0
+      string y = 'a string'
+      C# also has float
+      double == float with double the amount of usable bytes
+      bool == Boolean
+
+      Name	System 		Description									Bitsize	Example
+        Class Name
+      int	Int32		An integer value between -2,147,483,648 and 2,147,483,647			32-bits	40,000
+      long	Int64		An integer between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807	64-bits	3,000,000,000
+      short	Int16		An integer between -32,768 and 32,767						16-bits	342
+      float	Single		A floating point number between -3.402823e38 and 3.402823e38			32-bits	3.14159f
+      double	Double		A floating point number between -1.79769313486232e308 and 1.79769313486232e308. 
+                    Allows more precision than a float.		64-bits	3.1415926535897932
+      char	Char		One unicode character								16-bits	'g'
+      bool	Boolean		A true or false value								8-bits	true
+
+      ===============WORKING EXAMPLES=============
+        Python EX: Python Python Python
+        name = "Tim"
+        age = 30
+        height = 1.905
+        blueEyed = false
+
+        C# EX: C# C# C#
+        string name = "Todd";
+        int age = 32;
+        double height = 1.875;
+        bool blueEyed = true;
+      ===============WORKING EXAMPLES=============
+    ===============DEFINING VARIABLES=============
+----------------BASIC SYNTAX----------------
+
+----------------BASIC SYNTAX CONT-----------
+  ****************DO NOT FORGET ;*************
+    using System;
+
+    namespace Form
+    {
+      class Program
+      {
+        static void Main(string[] args)
+        {
+          // Create Variables
+
+          string name = "Shadow";
+          string breed = "Golden Retriever";
+          int age = 5;
+          double weight = 65.22;
+          bool spayed = true;
+
+
+          // Print variables to the console
+          
+          Console.WriteLine(name);
+          Console.WriteLine(breed);
+          Console.WriteLine(age);
+          Console.WriteLine(weight);
+          Console.WriteLine(spayed);
+        }
+      }
+    }
+  ****************DO NOT FORGET ;*************
+----------------BASIC SYNTAX CONT-----------
+
+
+--------------SYNTAX ERRORS-----------------
+  randomData = "asdf jskdf";
+  Console.WriteLine(randomData);
+
+  The name 'randomData' does not exist in the current context [CS0103:] 
+  *************************************
+  int  score = 45.39;
+
+  Cannot implicitly convert type 'double' to 'int'. An explicit conversion exists (are you missing a cast?)
+
+--------------SYNTAX ERRORS-----------------
+
+--------------SYNTAX ERRORS CONT------------
+  using System;
+
+  namespace BugSquasher
+  {
+    class Program
+    {
+      static void Main(string[] args)
+      {
+        int number = 38498.3222;
+
+        dinosaur = "Barney";
+
+        double lock = 293.000;  //LOCK IS A PROTECTED KEYWORD
+
+        bool is.yes = true;
+
+        string band = "The Low Anthem"
+
+      }
+    }
+  }
+    ****************RELATED ERROR MESSAGES*********************
+      Program.cs(13,14): error CS1001: Identifier expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(13,14): error CS1002: ; expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(13,19): error CS1003: Syntax error, '(' expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(13,19): error CS1525: Invalid expression term '=' [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(13,28): error CS1026: ) expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(15,12): error CS1001: Identifier expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(15,12): error CS1002: ; expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(15,12): error CS1525: Invalid expression term 'is' [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(15,14): error CS1525: Invalid expression term '.' [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+      Program.cs(17,37): error CS1002: ; expected [/home/ccuser/workspace/csharp-data-types-variables-handling-errors-csharp/e7-workspace.csproj]
+    ****************RELATED ERROR MESSAGES*********************
+--------------SYNTAX ERRORS CONT------------
+
+______________BUILT IN MATH__________________
+  Math.Abs()�will find the absolute value of a number. 
+    Example: Math.Abs(-5) returns 5.
+  Math.Sqrt()�will find the square root of a number. 
+    Example: Math.Sqrt(16) returns 4.
+  Math.Floor()�will round the given double or decimal down to the nearest whole number. 
+    Example: Math.Floor(8.65) returns 8.
+  Math.Min()�returns the smaller of two numbers. 
+    Example: Math.Min(39, 12) returns 12.
+
+  NaN == Not a Number
+
+______________BUILT IN MATH__________________
+
+__________________MORE MATH__________________
+
+  using System;
+
+  namespace DocumentationHunt
+  {
+    class Program
+    {
+      static void Main(string[] args)
+      {
+
+        double numberOne = 6.5;
+        double numberTwo = 4;
+
+        // Raise numberOne to the numberTwo power
+        Console.WriteLine(Math.Pow(numberOne, numberTwo));
+
+        // Round numberOne up
+        Console.WriteLine(Math.Ceiling(numberOne));
+
+        // Find the larger number between numberOne and numberTwo
+        Console.WriteLine(Math.Max(numberOne, numberTwo));
+
+      }
+    }
+  }
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  using System;
+
+  namespace Review
+  {
+    class Program
+    {
+      static void Main(string[] args)
+      {
+        /* use this space to write your own short program! 
+        Here's what you learned:
+
+        DATA TYPES: int, double
+        ARITHMETIC OPERATORS: +, -, *, /
+        INCREMENT/DECREMENT: ++, --
+        MODULO: % 
+        BUILT-IN METHODS: Abs, Pow, Sqrt, Floor, Ceiling, Min, Max
+
+        Good luck! */
+
+      }
+    }
+  }
+__________________MORE MATH__________________
+
+_____________STRING INTERPOLATION____________
+
+  string place = "Coding Dojo";
+  Console.WriteLine($"Hello {place}!");
+
+  prints Hello Coding Dojo!
+
+  $ is like an f string, or %s string in python
+  Fstring type:
+    Python IE f"some string {variable}"
+    C#     IE $ $"some string {variable}"
+  %s string type:
+    Python IE "some string %s"  %(variable)
+    C#     IE "some string {0}","variable"
+
+_____________STRING INTERPOLATION____________
+
+______________CONDITIONALS________
+  ------------IF, ELSE--------------
+    int numRings = 5;
+    if (numRings >= 5)
+    {
+        Console.WriteLine("You are welcome to join the party");
+    }
+    else if (numRings > 2)
+    {
+        Console.WriteLine($"Decent...but {numRings} rings aren't enough");
+    }
+    else
+    {
+        Console.WriteLine("Go win some more rings");
+    }
+  ------------IF, ELSE--------------
+______________CONDITIONALS________
+
+_____________OPERATORS____________
+  -------------COMPASRISON----------
+    <   Is the number on the left less than the number on the right?
+    >   Is the number on the left greater than the number on the right?
+    <=  Is the number on the left less than or equal to the number on the right?
+    >=  Is the number on the left greater than or equal to the number on the right?
+    ==  Is the number on the left equal to the number of the right?
+    !=  Is the number on the left not equal to the number of the right?
+  -------------COMPASRISON----------
+
+  -------------LOGIC----------------
+    &&  are two conditions BOTH true?
+    ||  are EITHER of the conditions true?
+    !   true becomes false, false becomes true
+  -------------LOGIC----------------
+_____________OPERATORS____________
+________________TIME______________
+DateTime CurrentTime = DateTime.Now;
+
+----------WORKING EXAMPLES--------
+            DateTime CurrentTime = DateTime.Now;
+            <div>
+                <h4>Current Time</h4>
+                <h4>@CurrentTime</h4>
+            </div>
+----------WORKING EXAMPLES--------
+________________TIME______________
+----------WORKING EXAMPLES--------
+  =============
+  int numRings = 5;
+  string name = "Kobe";
+  if (numrings >= 5 && name == "Kobe")
+  {
+    Console.WriteLine($"Welcome to the party {name}, congratulations on your {numRings} championships!");
+  }
+  =============
+  int numRings = 5;
+  int numOfAllStarAppearances = 17;
+  if (numRings >= 5 || numOfAllStarAppearances > 3)
+  {
+    Console.WriteLine("Welcome, you are truly a legend");
+  }
+  =============
+  bool crazy = true;
+  if (!crazy)
+  {
+      Console.WriteLine("Let's party!");
+  }
+  =============
+----------WORKING EXAMPLES--------

@@ -1,0 +1,173 @@
+--------------MODELS--------------
+public class Friend
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Location { get; set; }
+}
+****************************
+****************************
+namespace YourNamespace.Models
+{
+    public class User
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
+****************************
+User.cs
+****************************
+namespace MyCoolProj.Models
+{
+    public class User
+    {
+        public string FirstName {get;set;}
+        public string LastName {get;set;}
+    }
+}
+****************************
+UserDetail.cshtml
+****************************
+    @using MyCoolProj.Models
+    @model User
+        @model MyCoolProj.Models.User
+****************************
+UserController.cs
+****************************
+// other code ...
+public IActionResult UserDetail()
+{
+    // While being hard-coded here, this user instance will eventually come from our DB
+    User someUser = new User()
+    {
+        FirstName = "Sally",
+        LastName = "Sanderson"
+    };
+    // Here we pass this instance to our View
+    return View(someUser);
+    // If we also need to include the name of our View, we pass our instance as a second argument
+    // return View("OtherView", someUser);
+}
+****************************
+UserDetail.cshtml
+****************************
+    @model MyCoolProj.Models.User
+    <h1>Super sweet page for @Model.FirstName @Model.LastName</h1>
+--------------MODELS--------------
+------MODEL VALIDATION SETUP------
+****************************
+User.cs
+****************************
+using System.ComponentModel.DataAnnotations;
+namespace YourNamespace.Models
+{
+    public class User
+    {
+        // Class definition
+    }
+}
+------MODEL VALIDATION SETUP------
+-----------------REGEX-----------------
+Name of DataAnnotation ||     Use                                                                       ||    Parameters
+Required	           ||     Validates whether the field has a value.	                                ||    NA
+Regular Expression     ||     Validates whether the submitted value conforms to a regex string.	        ||    A regex string.
+MinLength()	           ||     Validates that a string or array field has the specified minimum length.  ||    An integer.
+MaxLength()	           ||     Validates that a string or array field has the specified maximum length.  ||    An integer.
+Range()                ||     Checks whether the value is within the range specified.                   ||    Two integers or two doubles. Must be the same type as the field.
+EmailAddress           ||     Validates that the field is in the form of a valid email address.         ||    NA
+Compare()              ||     Validates that two fields contain the same value.                         ||    Two integers or two doubles. Must be the same type as the field.
+                       ||     Only needs to be applied to one of the two fields                         ||
+DataType()	           ||     Ensures that the field conforms to a specific DataType                    ||    A DataType object
+****************************
+User.cs
+****************************
+using System.ComponentModel.DataAnnotations;
+ 
+namespace YourNamespace.Models
+{
+    public class User
+    {
+        [Required]
+        [MinLength(3)]
+        public string Username { get; set; }
+ 
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+ 
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+}
+-----------------REGEX-----------------
+------VIEWS VALIDATION SETUP------
+****************************
+NewUser.cshtml
+****************************
+    @model User
+    <form action="/add" method="POST">
+        <input asp-for="Username"> 
+        <input asp-for="Email">
+        <input asp-for="Password">
+        <input value="Add User" type="submit">
+    </form>
+****************************
+NewUser.cshtml (updated)
+****************************
+    @model User
+    <form asp-action="Create" asp-controller="Home" method="post">
+        <span asp-validation-for="Username"></span>
+        <label asp-for="Username"></label>
+        <input asp-for="Username">
+        
+        <span asp-validation-for="Email"></span>
+        <label asp-for="Email"></label>
+        <input asp-for="Email">
+        <span asp-validation-for="Password"></span>
+        <label asp-for="Password"></label>
+        <input asp-for="Password">
+        <input value="Add User" type="submit">    
+    </form>
+****************************
+User.cs
+****************************
+    //other code
+    [Display(Name = "Your Username:")] 
+    public string Username { get; set; }
+    //other fields
+****************************
+****************************
+****************************
+****************************
+    //other code
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+    //other fields
+****************************
+****************************
+    <input type="password" name="Password">
+------VIEWS VALIDATION SETUP------
+---CONTROLLER VALIDATION SETUP----
+****************************
+using YourNamespace.Models;
+ 
+// In HomeController
+[HttpPost("user/create")]
+public IActionResult Create(User user)
+{
+    if(ModelState.IsValid)
+    {
+        // do somethng!  maybe insert into db?  then we will redirect
+        return RedirectToAction("SomeAction");
+    }
+    else
+    {
+        // Oh no!  We need to return a ViewResponse to preserve the ModelState, and the errors it now contains!
+        return View("NewUser");
+    }
+}
+****************************
+---CONTROLLER VALIDATION SETUP----

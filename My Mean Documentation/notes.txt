@@ -1,0 +1,76 @@
+<!---------JavaScript---------->
+
+*********The Big Three**********
+Often times, when referring to the core languages of the internet,
+     we talk about 'the big three'. 
+     These three technologies are present in just about 
+     every application you encounter on the web. Let's recap:
+
+HTML represents the content and the structure. 
+    We can think of this as the skeleton of a webpage. 
+    Elements are first placed into the Document Object Model, 
+    or the DOM, so that data can be represented on the browser.
+
+CSS represents the style and positioning of our HTML elements.
+    We can think of this as the skin and clothes, 
+    the visual side of our website. 
+    Things like color, font, sizing, 
+    and positioning are all controlled in part by CSS.
+
+JavaScript is the action. We can think of it as the behavior of our website.
+    You can build beautiful static websites with HTML & CSS, 
+    but they're not actually functional until we add logic. 
+    JS allows us to interact with our HTML & CSS by dynamically manipulating the DOM.
+
+
+************Features************
+
+|||| JavaScript is an interpreted language. ||||
+
+    At runtime, an interpreter parses the 
+    JavaScript we wrote and turns it into 
+    machine code for the computer. 
+
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    This is contrary to a compiled language, 
+    which compiles our code into a machine language prior to runtime. 
+    The most common of all JavaScript interpreters are built into 
+    web browsers, with Chrome using the V8 Engine, and Firefox using SpiderMonkey. 
+    These interpreters each have their own specific rules for how 
+    JavaScript should run and it should be noted that not all interpreters have identical behavior!
+
+|||| JavaScript is an event-driven programming language. ||||
+
+    When we think of it as the layer of behavior between the UI and the back-end, 
+    this makes sense. Creating a <button> in HTML does not mean that button does anything! 
+    However, clicking that button is an event that JavaScript can listen for. 
+    JavaScript comes equipped with all manner of UI events, 
+    from hovering your mouse over a specific HTML element, to scrolling, 
+    to clicking, to submitting forms. 
+    Now consider that the HTTP request and response cycle is also based around user-driven events, 
+    you might notice how these technologies overlap and work together! 
+
+|||| JavaScript is run on a single thread. ||||
+
+    Putting it simply, JavaScript runs one command at a time, 
+    never performing operations concurrently. 
+    
+    This raises some interesting questions. 
+    If JavaScript only ever runs one command at a time, 
+    how does it listen for events? 
+    The answer is the event loop, 
+    a specialized queue that allows JavaScript to dynamically add new operations when the events happen, 
+    even if it is already performing operations. 
+    This is why JavaScript is sometimes (and perhaps erroneously) referred to as 'non-blocking'.
+
+************JavaScript Prerequisites************
+Variables - declaration and assignment
+Math object - .floor(), .random(), etc
+Strings - concatenation and interpolation
+Conditionals - if, else if, else, booleans, boolean operators, truthy and falsey
+Arrays - .push(), .pop(), iterating
+Objects - key-value pairs, dot notation, bracket notation, iterating
+Loops - for loops, while loops, for in loops,do while loops, break, continue
+Functions - declaring, invoking, returning
+DOM Manipulation - select and modify elements

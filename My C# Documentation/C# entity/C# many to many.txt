@@ -1,0 +1,60 @@
+----------------ManytoMany---------------
+*****************************************
+Magazine.cs
+*****************************************
+public class Magazine
+{
+    public int MagazineId { get; set; }
+    public string Title { get; set; } 
+    public List<Subscription> Readers { get; set; }
+}
+*****************************************
+Person.cs
+*****************************************
+public class Person
+{
+    public int PersonId { get; set; }
+    public string Name { get; set; }
+    public List<Subscription> Subscriptions { get; set; }
+}
+*****************************************
+Subscription.cs
+*****************************************
+public class Subscription
+{
+    public int SubscriptionId { get; set; }
+    public int PersonId { get; set; }
+    public int MagazineId { get; set; }
+    public Person Person { get; set; }
+    public Magazine Magazine { get; set; }
+}
+*****************************************
+YourContext.cs
+*****************************************
+//Other code
+public DbSet<Person> Persons { get; set; }
+public DbSet<Magazine> Magazines { get; set; }
+public DbSet<Subscription> Subscriptions { get; set; }
+*****************************************
+In your Controller:
+*****************************************
+[HttpGet("{personId}")]
+public IActionResult Show(int personId)
+{
+    var personWithSubsAndMags = dbContext.Persons
+    	.Include(person => person.Subscriptions)
+        .ThenInclude(sub => sub.Magazine)
+        .FirstOrDefault(person => person.PersonId == personId);
+    
+    return View(personWithSubsAndMags);
+}
+*****************************************
+In your View:
+*****************************************
+@model Person
+<h1>Subscriptions for @Model.Name</h1>
+@foreach(var sub in Model.Subscriptions)
+{
+    <p>@sub.Magazine.Title</p>
+}
+----------------ManytoMany---------------

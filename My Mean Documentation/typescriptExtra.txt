@@ -1,0 +1,61 @@
+****************Imports*****************
+// Sample patterns:
+import * from 'libraryName'; // import all from x;
+import { SpecificLibraryObject } from 'filepath/LibraryName'; // import 1 from x;
+import { objectA, objectB } from 'filepath/LibraryName'; // import 2 from x;
+// Real examples:
+import * from 'rxjs';
+import observable from 'rxjs/observable'
+
+****************Exports*****************
+export class SampleClass {
+	sampleMethod(aStr: string): number {
+		return aStr.length()
+	}
+} // Export a class inline.copy
+// Alternative
+class SampleClass {
+	sampleMethod(aStr: string): number {
+		return aStr.length()
+	}
+}
+export { SampleClass as NewClassName } // Export a class with a different name.
+// Alternative
+class SampleClassA {
+	sampleMethod(aStr: string): number {
+		return aStr.length()
+	}
+}
+class SampleClassB {
+	sampleMethod(aStr: string): number {
+		return aStr.length()
+	}
+}
+export { SampleClassA, SampleClassB } // Export 2 Class
+
+****************Interfaces*****************
+
+// Not using an interface
+function printName(user: { name: string }): void{
+	console.log(user.name);
+	return;
+}
+// Using an Interface
+interface UserInterface {
+	name: string
+}
+function printName(user: UserInterface): void{
+	console.log(user.name);
+	return;
+}
+
+
+interface UserInterface {
+	name: string
+	cellNumber?: number;
+}
+function printName(user: UserInterface): void{
+	console.log(user.name);
+	if (user.cellNumber){ console.log(user.cellNumber) }
+	return;
+}

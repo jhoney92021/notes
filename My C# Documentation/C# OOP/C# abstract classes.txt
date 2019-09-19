@@ -1,0 +1,59 @@
+---------ABSTRACT CLASSES----------
+classes that cannot, or should not be instantiated
+IE lifeform, to human, or Vehicle to Car
+***********************************
+***********************************
+abstract class Vehicle
+{
+    public int NumPassengers;
+    public string Color;
+    public double Odometer;
+     
+    public Vehicle(int numPas, string col)
+    {   
+        NumPassengers = numPas;
+        Color = col;
+        Odometer = 0;
+    }
+     
+    public Vehicle(string col)
+    {
+        NumPassengers = 5;
+        Color = col;
+        Odometer = 0;
+    }
+     
+    public virtual void GetInfo()
+    {
+        Console.WriteLine($"Num Passengers: {NumPassengers}");
+        Console.WriteLine($"Color: {Color}");
+        Console.WriteLine($"Miles: {Odometer}");
+    }
+}
+***********************************
+***********************************
+abstract class Vehicle
+{
+    // previous Vehicle code here...
+     
+    // "abstract" methods only take a method "signature", just like interfaces
+    // they also must be either "public" or "protected", as they need to be
+    // accessible to their child classes
+    public abstract void MakeNoise();
+}
+***********************************
+***********************************
+class Car : Vehicle, IRideable
+{
+    // previous Car code here...
+     
+    // inherited "abstract" methods must be "overridden" by the child class
+    // the override keyword is used here, just like it is for overriding "virtual" parent methods
+    public override void MakeNoise()
+    {
+        Console.WriteLine("Beeeeep!");
+    }
+}
+***********************************
+***********************************
+---------ABSTRACT CLASSES----------

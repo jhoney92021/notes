@@ -1,0 +1,10 @@
+----------------ACCESS MODIFIERS-------------
+--------------GENERAL DESCRIPTIONS-----------
+public:      No access restriction
+
+private:     Access restricted to own class (default for class members)
+
+protected:   Access restricted to own class, and any child class
+
+internal:    Access restricted to Assembly (essentially, your project's compiled .dll)
+--------------GENERAL DESCRIPTIONS-----------

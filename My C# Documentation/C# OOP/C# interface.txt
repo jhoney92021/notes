@@ -1,0 +1,133 @@
+------------INTERFACE-------------
+interface is used to inherit methods
+// method signature:
+void ExampleMethod(string parameterA, int parameterB);
+********************************
+********************************
+// common naming convention for interfaces:
+// capital I + DescriptionOfBehavior
+interface IRideable
+{
+    // any class that implements "IRideable", must have the following methods/properties
+     
+    // in interfaces, "method signatures" are used.
+    // this means that there is no body to this method,
+    // only its return type, name, and parameters
+    void Ride(double distance);
+     
+    // properties can also be used in interfaces (fields can not)
+    double DistanceTraveled {get;set;}
+}
+********************************
+********************************
+// common naming convention for interfaces:
+// capital I + DescriptionOfBehavior
+interface IRideable
+{
+    // any class that implements "IRideable", must have the following methods/properties
+     
+    // in interfaces, "method signatures" are used.
+    // this means that there is no body to this method,
+    // only its return type, name, and parameters
+    void Ride(double distance);
+     
+    // properties can also be used in interfaces (fields can not)
+    double DistanceTraveled {get;set;}
+}
+********************************
+********************************
+class Horse : IRideable
+{
+    // a horse can have its own unique attributes
+    public string Name;
+    public double Endurance;
+     
+    // implementing DistanceTraveled a bit differently from a Car,
+    // only requirement here, is that it has a property for DistanceTraveled
+    public double DistanceTraveled {get;set;}
+     
+    public Horse(string name, double endurance)
+    {
+        Name = name;
+        Endurance = endurance;
+        DistanceTraveled = 0;
+    }
+    // implementing Ride, again, a bit differently from a Car
+    // a Horse can only go so far as its endurance will allow
+    public void Ride(double distance)
+    {
+        if(distance >= Endurance)
+            distance = Endurance;
+        Console.WriteLine("... riding, heeeyahhh ...");
+        DistanceTraveled += distance;
+    }
+}
+------------INTERFACE-------------
+-------POLYMORPH INTERFACE--------
+class Program
+{
+    public static void Main(string[] args)
+    {
+        IRideable[] variousRideables = new IRideable[]
+        {
+            new Car("Yellow", "Dodge", "Dart"),
+            new Car("Green", "Ford", "Fiesta"),
+            new Horse("Silver Queen", 100),
+            new Horse("Samammish", 75),
+        };
+        // let them all ride!
+        foreach(var rideable in variousRideables)
+        {
+            // each "rideable" object will be able to invoke the common "Ride()" method
+            // however the implementation of "Ride()" will be unique to how each class has chosen to build it
+            rideable.Ride(50);
+        }
+    }
+}
+********************************
+********************************
+class Person
+{
+    public string Name;
+    // Any class that implements IRideable can be used!
+    public IRideable Transport;
+    public double Miles;
+    public Person(string name, IRideable trans)
+    {
+        Name = name;
+        Transport = trans;
+        Miles = 0;
+    }
+    // Person can make use of the capabilities of their "transport"
+    public void GoSomewhere(double miles)
+    {
+        Transport.Ride(miles);
+        Miles += Transport.DistanceTraveled;
+    }
+    public void GetInfo()
+    {
+        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Miles Traveled: {Miles}");
+    }
+}
+********************************
+********************************
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Horse wilbur = new Horse("Wilbur", 120);
+        Car volvo = new Car("Yellow", "Volvo", "240");
+         
+        // sally starts out with a horse
+        Person sally = new Person("Sally", wilbur);
+        // sally can ride her horse
+        sally.GoSomewhere(34);
+         
+        // we can also change her Transport to a Car
+        sally.Transport = volvo;
+        sally.GoSomewhere(100);
+        sally.GetInfo();
+    }
+}
+-------POLYMORPH INTERFACE--------

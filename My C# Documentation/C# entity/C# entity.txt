@@ -1,0 +1,152 @@
+------------------------SET UP ENTITY-------------------------
+dotnet add package Pomelo.EntityFrameworkCore.MySql -v 2.2.0
+
+    MAKES MIGRATION
+    dotnet ef migrations add YourMigrationName
+
+    MAKES MIGRATION
+    dotnet ef migrations add FirstMigration
+
+    MAKES MIGRATION GIVES DETAILS OF MIGRATION
+    dotnet ef migrations add FirstMigration -v
+
+    DJANGO MIGRATE BASICALLY
+    dotnet ef database update
+
+**************************************************************
+YourContext.cs
+**************************************************************
+using Microsoft.EntityFrameworkCore;
+ 
+namespace YourNamespace.Models
+{
+    public class MyContext : DbContext
+    {
+        // base() calls the parent class' constructor passing the "options" parameter along
+        public MyContext(DbContextOptions options) : base(options) { }
+    }
+}
+**************************************************************
+Startup.cs
+**************************************************************
+    using MyProject.Models;
+    using Microsoft.EntityFrameworkCore;
+    public class Startup
+    {
+        // Other startup code
+        public void ConfigureServices(IServiceCollection services)
+        {
+            string mySqlConnection = "server=localhost;userid=root;password=root;port=3306;database=mydb;SslMode=None";
+            services.AddDbContext<MyContext>(options => options.UseMySql(mySqlConnection));
+            // Add other services
+        }
+        // Other startup code
+    }
+**************************************************************
+User.cs
+**************************************************************
+    using System.ComponentModel.DataAnnotations;
+    using System;
+    namespace MyProject.Models
+    {
+        public class User
+        {
+            // auto-implemented properties need to match the columns in your table
+            // the [Key] attribute is used to mark the Model property being used for your table's Primary Key
+            [Key]
+            public int UserId { get; set; }
+            // MySQL VARCHAR and TEXT types can be represeted by a string
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+            // The MySQL DATETIME type can be represented by a DateTime
+            public DateTime CreatedAt {get;set;}
+            public DateTime UpdatedAt {get;set;}
+        }
+    }    
+**************************************************************
+MyContext.cs
+**************************************************************
+    using Microsoft.EntityFrameworkCore; 
+    namespace MyProject.Models
+    {
+        public class MyContext : DbContext
+        {
+            public MyContext(DbContextOptions options) : base(options) { }
+            
+            // "users" table is represented by this DbSet "Users"
+            public DbSet<User> Users {get;set;}
+        }
+    }    
+**************************************************************
+YourController.cs
+**************************************************************
+using Microsoft.EntityFrameworkCore;
+using YourNamespace.Models;
+using System.Linq;
+// Other using statements
+namespace MyProject.Controllers
+{
+    public class HomeController : Controller
+    {
+        private MyContext dbContext;
+     
+        // here we can "inject" our context service into the constructor
+        public HomeController(MyContext context)
+        {
+            dbContext = context;
+        }
+     
+        [HttpGet]
+        [Route("")]
+        public IActionResult Index()
+        {
+            List<User> AllUsers = dbContext.Users.ToList();
+            
+            return View();
+        }
+    }
+ }
+------------------------SET UP ENTITY-------------------------
+------------------------SECURE CONNECT------------------------
+**************************************************************
+appsettings.json
+**************************************************************
+{
+    "DBInfo":
+    {
+        "Name": "MySQLconnect",
+        "ConnectionString": "server=localhost;userid=root;password=root;port=3306;database=mydb;SslMode=None"
+    }
+}
+**************************************************************
+Startup
+**************************************************************
+// other using statements
+using Microsoft.Extensions.Configuration;
+public class Startup
+{
+    // This public getter will be how you access the data from appsettings.json
+    // To access the connection string itself, you would use the following:
+    // Configuration["DBInfo:ConnectionString"]
+    public IConfiguration Configuration {get;}
+    
+    // Here we will "inject" the default IConfiguration service, which will bind to appsettings.json by default
+    // and then assign it to the Configuration property.  This happens at the startup of our application.
+    public Startup(IConfiguration configuration)
+    {
+    	Configuration = configuration;
+    }
+    
+    // Now we may use the connection string itself, bound to Configuration, to pass the required connection
+    // credentials to MySQL
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddDbContext<MyContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
+        // Add other services
+    }
+}
+------------------------SECURE CONNECT------------------------
+
+

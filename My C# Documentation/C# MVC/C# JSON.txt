@@ -1,0 +1,57 @@
+-----------JSON------------
+JSON: JavaScript Object Notation.
+
+JSON is a syntax for storing and exchanging data.
+
+JSON is text, written with JavaScript object notation.
+
+-----------JSON------------
+-----WORKING WITH JSON-----
+using Microsoft.AspNetCore.Mvc;
+ 
+namespace YourNamespace.Controllers
+{
+    public class YourController : Controller
+    {
+        [HttpGet]
+        [Route("")]
+        public JsonResult Example()
+        {
+            // The Json method converts the object passed to it into JSON
+            return Json(SomeObject);
+        }
+    }
+}
+***************************
+***************************
+// Other code
+[HttpGet]
+[Route("displayint")]
+public JsonResult DisplayInt()
+{
+    return Json(34);
+}
+ 
+// Suppose we're working with the Human class we wrote in the previous chapter
+[HttpGet]
+[Route("displayhuman")]
+public JsonResult DisplayHuman()
+{
+    return Json(new Human("Moose Phillips", 50, 5, 5));
+}
+***************************
+***************************
+// Other code
+[HttpGet]
+[Route("displayanon")]
+public JsonResult DisplayAnon()
+{
+    var AnonObject = new {
+    	FirstName = "Raz",
+	LastName = "Aquato",
+    	Age = 10
+    };
+    
+    return Json(AnonObject);
+}
+-----WORKING WITH JSON-----
