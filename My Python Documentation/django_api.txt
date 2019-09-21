@@ -1,0 +1,65 @@
+************empty print***********
+print('*'*50, '\n', manualStingify, '\n', '*'*50)
+************empty print***********
+
+*****converting views.py(Controller)*****
+
+--------Original Ex-----------------
+def shows(request): #Render MAIN PAGE
+    context = {
+        'Shows': Shows.objects.all()
+
+    }
+    return render(request, 'SHOWS/index.html', context)
+
+--------API Ex-----------------
+=======Serialize EX:
+
+from django.core import serializers
+
+def showsAPI(request, response):
+    #get all shows
+    shows = Shows.objects.all()    
+    data = serializers.serialize('json', shows)
+
+=======Simple JSON EX:
+    from django.utils import simplejson
+
+    some_data_to_dump = {
+    'some_var_1': 'foo',
+    'some_var_2': 'bar',
+    }
+
+    data = simplejson.dumps(some_data_to_dump)
+
+
+======Return
+
+    for Django 1.7 or Newer
+    return HttpResponse(data, content_type='application/json')
+
+    for Django 1.6 or Older
+    return HttpResponse(data, mimetype='application/json')
+
+*****converting views.py(Controller)*****
+
+*********convert SQL datetime to JSON
+
+print('*'*50, '\n', manualStingify, '\n', '*'*50)
+
+manualStingify = {
+        "title": thisShow.title,
+        "network": thisShow.network,
+        "description": thisShow.description,
+        "release_date": thisShow.release_date,
+        "created_at": thisShow.created_at,
+        "updated_at": thisShow.updated_at
+    }
+
+def myConverter(o):
+    if isinstance(o, datetime.datetime):
+        return o.__str__()
+
+data = json.dumps(manualStingify, default= myConverter)
+
+*********convert SQL datetime to JSON

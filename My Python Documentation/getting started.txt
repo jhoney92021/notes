@@ -1,0 +1,41 @@
+************empty print***********
+print('*'*50, '\n', manualStingify, '\n', '*'*50)
+************empty print***********
+
+
+****upgrading pip
+
+pip ----> Python Package Index (PyPI)
+
+python -m pip install --upgrade pip
+****upgrading pip
+
+****pip cmds
+
+pip install bcrypt
+
+
+****pip cmds
+****python cmds
+
+python manage.py runserver
+
+
+****python cmds
+********install django*******
+
+> virtualenv djangoPy3Env
+> call djangoPy3Env\Scripts\activate
+(djangoPy3Env)> pip install Django==1.10
+
+********install django*******
+
+
+
+*******startproject**********
+(djangoPy3Env) > cd python_stack/django/django_intro
+(djangoPy3Env) django_intro> django-admin startproject your_project_name_here
+
+(djangoPy3Env) > cd python_stack/django/django_intro
+(djangoPy3Env) django_intro> django-admin startproject your_project_name_here
+*******startproject**********
