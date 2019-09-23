@@ -7,7 +7,7 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu https://repo.
 server {
     listen 80;
     location / {
-        proxy_pass http://172.31.33.47:8000;
+        proxy_pass http://your aws private ip;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';

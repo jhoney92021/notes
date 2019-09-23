@@ -6,4 +6,6 @@ rm -rf .git
 rmdir /s .git
 *****deinit w/ sub
 
+dir/ah
+
 ************Git Cmd Prompt Shortcuts*************

@@ -1,0 +1,19 @@
+********C# Angular start********
+
+dotnet new angular -o my-new-app
+cd my-new-app
+
+***ANGULAR DEV KIT
+npm install --save-dev @angular-devkit/build-angular
+***ANGULAR DEV KIT
+
+Install npm packages
+To install third-party npm packages, 
+    use a command prompt in the ClientApp 
+    subdirectory. For example:
+        console
+
+        cd ClientApp
+        npm install --save <package_name>
+
+********C# Angular start********

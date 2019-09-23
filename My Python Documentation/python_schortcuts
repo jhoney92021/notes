@@ -1,7 +1,7 @@
 CHECK DATA TYPE, BEFORE CREATING LOOPS!!!!
 
-Numbers: An are integers (such as 1, 2, 3…), floats (such as 2.6, 4.8, etc.), 
-fractions (such as ½. ¾, etc.) or even complex numbers.
+Numbers: An are integers (such as 1, 2, 3ï¿½), floats (such as 2.6, 4.8, etc.), 
+fractions (such as ï¿½. ï¿½, etc.) or even complex numbers.
 	int (signed integer)
 	float
 	long
@@ -115,25 +115,25 @@ $
 
 ***********PATTERNS FOR URLS.PY******************
 urlpatterns = [
-        url(r'^bears$', views.one_method),                        # would only match localhost:8000/bears
-        url(r'^bears/(?P<my_val>\d+)$', views.another_method),    # would match localhost:8000/bears/23
-        url(r'^bears/(?P<name>\w+)/poke$', views.yet_another),    # would match localhost:8000/bears/pooh/poke
-    	url(r'^(?P<id>[0-9]+)/(?P<color>\w+)$', views.one_more),  # would match localhost:8000/17/brown
+        url(r'^bears$', views.one_method),ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½# would only match localhost:8000/bears
+        url(r'^bears/(?P<my_val>\d+)$', views.another_method),ï¿½ï¿½ï¿½ï¿½# would match localhost:8000/bears/23
+        url(r'^bears/(?P<name>\w+)/poke$', views.yet_another),ï¿½ï¿½ï¿½ï¿½# would match localhost:8000/bears/pooh/poke
+    	url(r'^(?P<id>[0-9]+)/(?P<color>\w+)$', views.one_more), ï¿½# would match localhost:8000/17/brown
 ]
 
 
 ***********METHODS IN VIEWS.PY******************
-def one_method(request):                # no values passed via URL
-    pass                                
+def one_method(request):ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½# no values passed via URL
+    passï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     
 def another_method(request, my_val):	# my_val would be a number from the URL
-    pass                                # given the example above, my_val would be 23
+    passï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½# given the example above, my_val would be 23
     
-def yet_another(request, name):	        # name would be a string from the URL
-    pass                                # given the example above, name would be 'pooh'
+def yet_another(request, name):	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½# name would be a string from the URL
+    passï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½# given the example above, name would be 'pooh'
     
 def one_more(request, id, color): 	# id would be a number, and color a string from the URL
-    pass                                # given the example above, id would be 17 and color would be 'brown'
+    passï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½# given the example above, id would be 17 and color would be 'brown'
 	
 
 ***********STARTING A NEW PROJECT******************
@@ -161,9 +161,3 @@ db.sqlite3
 
 (djangoPy3Env) project_name> git remote add origin https://github.com/your_github_username/your_github_repo_name
 (djangoPy3Env) project_name> git push origin master
-
-****************AWS PASS**************
-vVXzDDWBUKy9Y!6
-
-
-
