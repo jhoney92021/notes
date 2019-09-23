@@ -1,0 +1,19 @@
+**********xUnit Testing Shortcuts
+
+
+dotnet new sln 
+    to create a new solution
+
+dotnet new classlib 
+    to create the source project.
+
+
+dotnet sln add ./PrimeService/PrimeService.csproj
+     to add the class library project to the solution
+
+dotnet new xunit
+    creates a test project that uses xUnit as the test library
+
+     dotnet sln add ./PrimeService.csproj
+
+**********xUnit Testing Shortcuts

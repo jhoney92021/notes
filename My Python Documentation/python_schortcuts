@@ -160,4 +160,5 @@ db.sqlite3
 (djangoPy3Env) project_name> git commit -m "initial commit"
 
 (djangoPy3Env) project_name> git remote add origin https://github.com/your_github_username/your_github_repo_name
+
 (djangoPy3Env) project_name> git push origin master
