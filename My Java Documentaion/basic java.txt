@@ -1,0 +1,26 @@
+*********basic java***************
+***java functions
+java -version
+
+-----executes a class
+java HelloWorld
+-----executes a class
+
+***java functions
+***java compiler functions
+javac -version
+
+-----compiles a class (makes it executable)
+javac HelloWorld.java
+-----compiles a class (makes it executable)
+***java compiler functions
+
+
+
+****using generics
+
+import java.util.ArrayList;
+
+****using generics
+
+*********basic java***************

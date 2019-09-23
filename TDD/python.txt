@@ -1,0 +1,23 @@
+**********Unit Testing Shortcuts
+*******RUNS FILES
+python sample.py
+*******RUNS FILES
+*******IMPORT STATEMENTS
+import unittest
+*******IMPORT STATEMENTS
+*******ENTRY POINT MODYFIER
+if __name__ == "__main__":
+    unittest.main()
+*******ENTRY POINT MODYFIER
+*******CASE TO BE TESTED
+def reverseArray(list):
+    pass
+*******CASE TO BE TESTED
+*******CREATING TESTS
+class reverseArrayTest(unittest.TestCase):
+    # each method is a case or test to be run on a unit 
+    def testOne(self):
+        self.assertEqual(reverseArray([1,2,3]), [3,2,1])
+
+*******CREATING TESTS
+**********Unit Testing Shortcuts
