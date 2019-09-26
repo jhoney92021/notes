@@ -1,0 +1,10 @@
+*************NuGet*********
+
+dotnet new nugetconfig
+
+is a Package Handler
+IE(pip,npm,maven,gradle)
+
+
+
+*************NuGet*********
