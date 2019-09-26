@@ -1,0 +1,43 @@
+**********OBSERVABLES*********
+
+function similar to Promises
+think persistant Promise
+
+or really, just Angular observables
+
+=====CONSTRUCTING OBSERVER======
+
+Stored like Helper.java
+
+------ex ----from StackOverFlow
+
+import java.util.Observable;
+
+public class ObservableInteger extends Observable implements Serializable {
+
+    private int value;
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+        this.setChanged();
+        this.notifyObservers(value);
+    }
+}
+------ex
+
+=====IMPLEMENTING OBSERVER=====
+==> MainActivity
+private ObservableInteger a;
+
+	----IN onCreate----
+   // Create observable int
+    a = new ObservableInteger();
+    // Set a default value to it
+    a.setValue(0);
+
+
+**********OBSERVABLES*********
