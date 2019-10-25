@@ -1,0 +1,54 @@
+*************some basic differences***********
+
+--------------Strings & Classes--------
+    Strings as a type are actually a Class
+    they are not Primitive Types
+
+    Classes by Java convention are Always uppercased
+
+    By contrast in C# some classes can be used lowercased
+
+    In C# you could say something like:
+
+        public static string giveMeAString()
+        {
+            return string toReturn = "Some Generic String"
+        }
+
+    However in Java this same statement would be written
+
+        public static String giveMeAString()
+        {
+            return String toReturn = "Some Generic String"
+        }
+
+    While confusing at first, this does serve a purpose
+        to more explicitly state that you are calling on a class
+        rather than declaring a primitive type which refers generally to
+        physical storage
+
+--------------Generics and Lists--------
+
+    Another confusing difference is the 
+        use of the term List
+
+    In C# declaring a List is very simple
+        Ex: List<string>
+
+    However the Java declaration looks more like this
+        Ex: ArrayList<String>
+            or
+        Ex: LinkedList<String>
+
+    There is a term called List in Java
+        however it is used like an interface
+        where an ArrrayList inherits from
+
+    Class ArrayList() extends List
+    {
+        not the actual class, just an example
+    }
+
+    
+
+*************some basic differences***********
